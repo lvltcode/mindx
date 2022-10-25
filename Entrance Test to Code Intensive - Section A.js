@@ -3,8 +3,6 @@
 // A. PROBLEM SOLVING
 // 1. Finding array includes the longest strings - #1
 
-
-
 // function allLongestString(inputArray){
 //   // find the longest strings
 // 	const longestString = inputArray.reduce((previous, current) => {
@@ -73,5 +71,4 @@ function alternatingSums(weightArray) {
 
 const arr1 = [60, 40, 55, 75, 64];
 
-// In ra màn hình
 console.log(alternatingSums(arr1));
