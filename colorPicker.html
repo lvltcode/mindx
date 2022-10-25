@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1>Color Picker</h1>
+        <button id="btnPick" type="button">Pick and show color</button>
+        <h1 id="color"></h1>
+    </div>
+    <div>
+        <button id="btnCopy" type="button">Copy the color</button>
+    </div>
+   <script>
+       // 1. Randomly generate the color Code with gradient
+       const getHexCodeColor = () => {
+           const hexCodeString = (Math.random() * 0xfffff * 1000000).toString(16);
+        //    console.log(hexCodeString);
+        // Color code = # + colorCode + gradient
+        return "#" + hexCodeString.slice(0,6) + hexCodeString.slice(-2);
+       }
+    //    getHexCodeColor();
+       // 2. Pick and show the color
+       document.querySelector("#btnPick").addEventListener("click", () => {
+        const pickedColor = getHexCodeColor();
+        document.querySelector("#color").innerText = pickedColor;
+        
+      });
+       // 3. Copy the color code
+       const copyHexColor = () => {
+        const colorData = document.querySelector("#color").innerText;
+           // copy to clipboard
+           navigator.clipboard.writeText(colorData);
+        //    console.log("Color was copied to the clipboard is",colorData);
+        changeBackgroundColor(colorData);
+       }
+      document.querySelector('#btnCopy').addEventListener('click', (colorCode) => copyHexColor(colorCode));
+      
+      // 4. Change the background color
+      const changeBackgroundColor = (parameterColorData) => {
+        document
+          .querySelector("body")
+          .setAttribute("style", `background-color: ${parameterColorData}`);
+      }
+   </script>
+   
+</body>
+</html>
